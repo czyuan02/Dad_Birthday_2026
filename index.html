@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>爸爸的七十一年</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#E9E2D2;
+    --paper-deep:#DDD2B9;
+    --paper-line: rgba(34,35,31,0.14);
+    --ink:#22231F;
+    --ink-soft:#5C5A4C;
+    --night:#1B222B;
+    --night-text:#DED4BC;
+    --night-soft:#948E78;
+    --seal:#9C3B2E;
+    --seal-deep:#7E2F24;
+    --gold:#A98A4E;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Noto Sans SC", sans-serif;
+    font-weight:300;
+    line-height:1.9;
+    overflow-x:hidden;
+    background-image:
+      radial-gradient(ellipse at 20% 10%, rgba(255,255,255,0.35), transparent 45%),
+      radial-gradient(ellipse at 85% 60%, rgba(0,0,0,0.05), transparent 50%);
+  }
+
+  .serif{font-family:"Noto Serif SC", serif;}
+
+  /* 顶部卷轴进度线 */
+  #scrollbar{
+    position:fixed; top:0; left:0; height:3px; width:0%;
+    background:linear-gradient(90deg, var(--gold), var(--seal));
+    z-index:999; transition:width 0.1s linear;
+  }
+
+  section{
+    position:relative;
+    padding:min(14vw,140px) 8vw;
+    max-width:760px;
+    margin:0 auto;
+  }
+
+  /* ---------- HERO ---------- */
+  #hero{
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    max-width:100%;
+    padding:8vw;
+    text-align:center;
+  }
+  #hero .eyebrow{
+    letter-spacing:0.45em;
+    font-size:12px;
+    color:var(--ink-soft);
+    margin-bottom:28px;
+  }
+  #hero h1{
+    font-size:clamp(36px, 7vw, 68px);
+    font-weight:900;
+    line-height:1.35;
+    letter-spacing:0.02em;
+  }
+  #hero .date-line{
+    margin-top:26px;
+    font-size:15px;
+    letter-spacing:0.15em;
+    color:var(--ink-soft);
+  }
+  #hero .date-line b{color:var(--ink); font-weight:500;}
+  #hero .scrolldown{
+    margin-top:70px;
+    font-size:12px;
+    color:var(--ink-soft);
+    letter-spacing:0.3em;
+  }
+  #hero .scrolldown::after{
+    content:"";
+    display:block;
+    width:1px; height:46px;
+    background:var(--ink-soft);
+    margin:14px auto 0;
+    animation:drop 2.4s ease-in-out infinite;
+    opacity:0.5;
+  }
+  @keyframes drop{
+    0%{transform:scaleY(0); transform-origin:top;}
+    50%{transform:scaleY(1); transform-origin:top;}
+    50.01%{transform-origin:bottom;}
+    100%{transform:scaleY(0); transform-origin:bottom;}
+  }
+
+  /* ---------- 印章 · 年岁标记 ---------- */
+  .seal-divider{
+    display:flex;
+    align-items:center;
+    gap:22px;
+    max-width:760px;
+    margin:0 auto;
+    padding:0 8vw;
+  }
+  .seal-divider .line{
+    flex:1;
+    height:1px;
+    background:var(--paper-line);
+  }
+  .seal{
+    flex-shrink:0;
+    width:64px; height:64px;
+    background:var(--seal);
+    color:var(--paper);
+    border:1.5px solid var(--paper);
+    outline:1px solid var(--seal-deep);
+    outline-offset:-5px;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center;
+    font-family:"Noto Serif SC", serif;
+    font-weight:700;
+    font-size:15px;
+    line-height:1.3;
+    letter-spacing:0.05em;
+    transform:rotate(-3deg);
+    box-shadow:0 3px 10px rgba(0,0,0,0.18);
+    writing-mode:vertical-rl;
+    padding:4px 2px;
+  }
+
+  /* ---------- 人生阶段 卡片 ---------- */
+  .stage{
+    padding-top:70px;
+    padding-bottom:70px;
+  }
+  .stage .kicker{
+    font-size:12px;
+    letter-spacing:0.35em;
+    color:var(--seal);
+    margin-bottom:14px;
+    font-weight:500;
+  }
+  .stage h2{
+    font-size:clamp(26px, 4vw, 34px);
+    font-weight:700;
+    margin-bottom:26px;
+  }
+  .stage .body-text{
+    font-size:16px;
+    color:var(--ink);
+    font-weight:300;
+  }
+  .stage .body-text p{margin-bottom:1.3em;}
+  .stage .body-text p:last-child{margin-bottom:0;}
+
+  .quote-block{
+    margin:34px 0;
+    padding:26px 30px;
+    border-left:2px solid var(--seal);
+    background:rgba(255,255,255,0.28);
+    font-family:"Noto Serif SC", serif;
+    font-size:16px;
+    color:var(--ink);
+    font-style:normal;
+    line-height:2.05;
+  }
+  .quote-block .attr{
+    display:block;
+    margin-top:16px;
+    font-family:"Noto Sans SC", sans-serif;
+    font-size:12px;
+    letter-spacing:0.2em;
+    color:var(--ink-soft);
+    text-align:right;
+  }
+  .quote-block .cite-src{
+    display:block;
+    margin-top:6px;
+    font-family:"Noto Sans SC", sans-serif;
+    font-size:11.5px;
+    letter-spacing:0.08em;
+    opacity:0.7;
+  }
+  .quote-block .own-words{
+    display:block;
+    margin-top:22px;
+  }
+
+  /* 留白 占位相框 */
+  .blank-frame{
+    margin-top:34px;
+    aspect-ratio:4/3;
+    max-width:420px;
+    border:1px solid var(--ink-soft);
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:
+      repeating-linear-gradient(135deg, transparent, transparent 26px, rgba(34,35,31,0.035) 26px, rgba(34,35,31,0.035) 27px);
+  }
+  .blank-frame::before,.blank-frame::after{
+    content:"";
+    position:absolute;
+    width:14px; height:14px;
+    border:1px solid var(--gold);
+  }
+  .blank-frame::before{top:-1px;left:-1px;border-right:none;border-bottom:none;}
+  .blank-frame::after{bottom:-1px;right:-1px;border-left:none;border-top:none;}
+  .blank-frame span{
+    font-size:12px;
+    letter-spacing:0.15em;
+    color:var(--ink-soft);
+    text-align:center;
+    padding:0 30px;
+  }
+
+  .edit-note{
+    display:inline-block;
+    margin-top:16px;
+    font-size:11px;
+    letter-spacing:0.1em;
+    color:var(--seal);
+    border:1px dashed var(--seal);
+    padding:4px 10px;
+    opacity:0.75;
+  }
+
+  /* 实际照片相框 */
+  .photo-frame{
+    margin-top:34px;
+    max-width:420px;
+    position:relative;
+  }
+  .photo-frame img{
+    display:block;
+    width:100%;
+    height:auto;
+    filter:sepia(0.08) saturate(0.94);
+  }
+  .photo-frame::before,.photo-frame::after{
+    content:"";
+    position:absolute;
+    width:16px; height:16px;
+    border:1px solid var(--gold);
+    z-index:2;
+  }
+  .photo-frame::before{top:-1px;left:-1px;border-right:none;border-bottom:none;}
+  .photo-frame::after{bottom:-1px;right:-1px;border-left:none;border-top:none;}
+  .photo-frame figcaption{
+    margin-top:12px;
+    font-size:12px;
+    letter-spacing:0.1em;
+    color:var(--ink-soft);
+  }
+  #stage-junlv .photo-frame figcaption{color:var(--night-soft);}
+
+  /* 相册组图（古稀章节） */
+  .gallery{
+    margin-top:34px;
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:14px;
+  }
+  .gallery figure{
+    position:relative;
+    margin:0;
+    aspect-ratio:3/4;
+    overflow:hidden;
+  }
+  .gallery figure img{
+    width:100%; height:100%;
+    object-fit:cover;
+    object-position:center 20%;
+    filter:sepia(0.08) saturate(0.94);
+    transition:transform 0.6s ease;
+  }
+  .gallery figure:hover img{transform:scale(1.04);}
+  .gallery figcaption{
+    position:absolute;
+    left:0; right:0; bottom:0;
+    padding:10px 12px;
+    font-size:11px;
+    letter-spacing:0.08em;
+    color:var(--paper);
+    background:linear-gradient(to top, rgba(27,34,43,0.75), transparent);
+  }
+  /* 奇数张照片时，最后一张居中，避免偏在左边 */
+  .gallery figure:last-child:nth-child(odd){
+    grid-column:1 / -1;
+    justify-self:center;
+    width:calc(50% - 7px);
+  }
+  @media (max-width:640px){
+    .gallery figure:last-child:nth-child(odd){
+      width:100%;
+    }
+  }
+
+  .fact-note{
+    margin-top:14px;
+    font-size:11.5px;
+    letter-spacing:0.08em;
+    color:var(--seal);
+    opacity:0.85;
+  }
+
+  #hero .hero-photo{
+    max-width:210px;
+    margin:0 auto 30px;
+    position:relative;
+    border:1px solid var(--gold);
+    box-shadow:0 6px 22px rgba(0,0,0,0.15);
+  }
+  #hero .hero-photo img{
+    width:100%; height:auto; display:block;
+    filter:sepia(0.08) saturate(0.94);
+  }
+
+  #closing .closing-photo{
+    width:230px;
+    margin:0 auto 36px;
+    position:relative;
+  }
+  #closing .closing-photo img{
+    width:100%; display:block;
+    filter:sepia(0.08) saturate(0.94) grayscale(0.15);
+  }
+
+  /* ---------- 心迹 · 笔下深情 ---------- */
+  #stage-xinji{
+    background:var(--paper-deep);
+  }
+  #stage-xinji .intro{
+    font-size:15px;
+    color:var(--ink-soft);
+    margin-bottom:36px;
+  }
+  .poem-card{
+    margin-bottom:44px;
+  }
+  .poem-card .poem-title{
+    font-family:"Noto Serif SC", serif;
+    font-size:19px;
+    font-weight:700;
+    margin-bottom:6px;
+  }
+  .poem-card .poem-meta{
+    font-size:11.5px;
+    letter-spacing:0.1em;
+    color:var(--seal);
+    margin-bottom:20px;
+  }
+  .poem-card .poem-body{
+    font-family:"Noto Serif SC", serif;
+    font-size:15.5px;
+    line-height:2.15;
+    color:var(--ink);
+    padding-left:22px;
+    border-left:1px solid var(--gold);
+    white-space:pre-line;
+  }
+  .poem-card .poem-sign{
+    display:block;
+    margin-top:18px;
+    font-family:"Noto Sans SC", sans-serif;
+    font-size:12px;
+    letter-spacing:0.15em;
+    color:var(--ink-soft);
+    text-align:right;
+    padding-right:4px;
+  }
+  .poem-card .poem-note{
+    margin-top:16px;
+    padding-left:22px;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    line-height:1.9;
+  }
+  .family-gallery{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:14px;
+    margin:8px 0 44px;
+  }
+  .family-gallery figure{
+    margin:0;
+  }
+  .family-gallery img{
+    width:100%; height:auto; display:block;
+    filter:sepia(0.08) saturate(0.94);
+  }
+  .family-gallery figcaption{
+    margin-top:8px;
+    font-size:11.5px;
+    color:var(--ink-soft);
+    letter-spacing:0.05em;
+  }
+
+  /* ---------- 军旅（夜色）章节 ---------- */
+  #stage-junlv{
+    background:var(--night);
+    color:var(--night-text);
+    max-width:100%;
+    padding-left:8vw;
+    padding-right:8vw;
+  }
+  #stage-junlv .inner{max-width:760px; margin:0 auto; position:relative;}
+  #stage-junlv .kicker{color:var(--gold);}
+  #stage-junlv h2{color:var(--paper);}
+  #stage-junlv .body-text{color:var(--night-text);}
+  #stage-junlv .quote-block{
+    border-left:2px solid var(--gold);
+    background:rgba(255,255,255,0.04);
+    color:var(--paper);
+  }
+  #stage-junlv .quote-block .attr{color:var(--night-soft);}
+  #stage-junlv .seal-divider .line{background:rgba(222,212,188,0.18);}
+
+  .stars{
+    position:absolute; inset:0;
+    pointer-events:none;
+    opacity:0.5;
+  }
+  .stars span{
+    position:absolute;
+    width:2px; height:2px;
+    background:var(--night-text);
+    border-radius:50%;
+    opacity:0.5;
+  }
+
+  /* harmonica / 书 line icon 装饰 */
+  .companions{
+    display:flex;
+    gap:40px;
+    margin-top:38px;
+    flex-wrap:wrap;
+  }
+  .companions .item{
+    font-size:12px;
+    letter-spacing:0.15em;
+    color:var(--night-soft);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .companions .item .dot{
+    width:5px;height:5px;border-radius:50%;
+    background:var(--gold);
+  }
+
+  /* ---------- 视频号 / 古稀 章节 ---------- */
+  .channel-card{
+    margin-top:30px;
+    border:1px solid var(--ink-soft);
+    padding:32px;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .channel-card .label{
+    font-size:12px;
+    letter-spacing:0.25em;
+    color:var(--seal);
+  }
+  .channel-card a.btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    align-self:flex-start;
+    margin-top:6px;
+    padding:12px 26px;
+    background:var(--ink);
+    color:var(--paper);
+    text-decoration:none;
+    font-size:14px;
+    letter-spacing:0.1em;
+    transition:transform 0.25s ease, background 0.25s ease;
+  }
+  .channel-card a.btn:hover{background:var(--seal); transform:translateX(4px);}
+  .channel-card .hint{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    line-height:1.85;
+  }
+
+  /* ---------- 结语 ---------- */
+  #closing{
+    text-align:center;
+    padding-top:min(16vw,150px);
+    padding-bottom:min(18vw,170px);
+  }
+  #closing .mark{
+    width:1px;height:70px;
+    background:var(--gold);
+    margin:0 auto 40px;
+  }
+  #closing p.msg{
+    font-family:"Noto Serif SC", serif;
+    font-size:clamp(18px,2.6vw,22px);
+    line-height:2.1;
+    color:var(--ink);
+    margin-bottom:14px;
+  }
+  #closing .sign{
+    margin-top:40px;
+    font-size:13px;
+    letter-spacing:0.2em;
+    color:var(--ink-soft);
+  }
+
+  #closing .msg.strong{
+    max-width:520px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .thought-break{
+    width:26px;
+    height:1px;
+    background:var(--gold);
+    opacity:0.55;
+    margin:34px auto;
+  }
+
+  .epigraph{
+    margin:46px auto;
+    max-width:440px;
+    padding:30px 0;
+    border-top:1px solid var(--paper-line);
+    border-bottom:1px solid var(--paper-line);
+  }
+  .epigraph .cn{
+    font-family:"Noto Serif SC", serif;
+    font-size:16px;
+    letter-spacing:0.1em;
+    color:var(--ink);
+    margin-bottom:16px;
+  }
+  .epigraph .en{
+    font-family:Georgia, "Noto Serif SC", serif;
+    font-style:italic;
+    font-size:13px;
+    letter-spacing:0.02em;
+    color:var(--ink-soft);
+    margin-bottom:10px;
+    line-height:1.7;
+  }
+  .epigraph .cn-sub{
+    font-family:"Noto Serif SC", serif;
+    font-size:14px;
+    letter-spacing:0.15em;
+    color:var(--ink-soft);
+  }
+
+  .final-blessing{
+    margin-top:54px;
+    padding-top:34px;
+    text-align:center;
+    position:relative;
+  }
+  .final-blessing::before{
+    content:"";
+    position:absolute;
+    top:0; left:50%;
+    transform:translateX(-50%);
+    width:34px; height:1px;
+    background:var(--gold);
+    opacity:0.7;
+  }
+  .final-blessing .line{
+    font-family:"Noto Serif SC", serif;
+    font-size:19px;
+    font-weight:600;
+    letter-spacing:0.14em;
+    color:var(--seal-deep);
+    line-height:2.3;
+  }
+
+  footer{
+    text-align:center;
+    padding:40px;
+    font-size:11px;
+    letter-spacing:0.15em;
+    color:var(--ink-soft);
+    opacity:0.6;
+  }
+
+  /* scroll reveal */
+  .reveal{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity 0.9s ease, transform 0.9s ease;
+  }
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1; transform:none; transition:none;}
+    #hero .scrolldown::after{animation:none;}
+  }
+
+  @media (max-width:640px){
+    section{padding-left:7vw; padding-right:7vw;}
+    .seal{width:52px;height:52px;font-size:13px;}
+    .companions{gap:22px;}
+  }
+
+  /* ---------- 背景音乐按钮 ---------- */
+  #bgm-toggle{
+    position:fixed;
+    right:22px;
+    bottom:22px;
+    width:52px; height:52px;
+    border-radius:50%;
+    background:var(--ink);
+    border:1px solid var(--gold);
+    box-shadow:0 4px 18px rgba(0,0,0,0.25);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    z-index:998;
+    transition:transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  #bgm-toggle:hover{transform:scale(1.06);}
+  #bgm-toggle .ring{
+    position:absolute;
+    inset:-6px;
+    border:1px solid var(--gold);
+    border-radius:50%;
+    opacity:0;
+  }
+  #bgm-toggle.playing .ring{
+    opacity:0.55;
+    animation:bgm-pulse 2.6s ease-out infinite;
+  }
+  @keyframes bgm-pulse{
+    0%{ transform:scale(0.85); opacity:0.55; }
+    100%{ transform:scale(1.35); opacity:0; }
+  }
+  #bgm-toggle .icon{
+    position:relative;
+    width:16px; height:16px;
+  }
+  #bgm-toggle .icon .bar{
+    position:absolute;
+    top:0; width:4px; height:16px;
+    background:var(--paper);
+    border-radius:1px;
+  }
+  #bgm-toggle .icon .bar1{left:1px;}
+  #bgm-toggle .icon .bar2{left:11px;}
+  #bgm-toggle.paused .icon .bar{ display:none; }
+  #bgm-toggle .icon .tri{
+    display:none;
+    width:0; height:0;
+    border-top:8px solid transparent;
+    border-bottom:8px solid transparent;
+    border-left:13px solid var(--paper);
+    margin-left:2px;
+  }
+  #bgm-toggle.paused .icon .tri{ display:block; }
+
+  #bgm-credit{
+    position:fixed;
+    right:22px;
+    bottom:80px;
+    max-width:150px;
+    text-align:right;
+    font-size:10.5px;
+    line-height:1.6;
+    letter-spacing:0.04em;
+    color:var(--ink-soft);
+    opacity:0.75;
+    z-index:998;
+    font-family:"Noto Serif SC", serif;
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    #bgm-toggle.playing .ring{ animation:none; opacity:0.3; }
+  }
+</style>
+</head>
+<body>
+
+<div id="scrollbar"></div>
+
+<audio id="bgm" src="images/bgm.mp3" loop preload="auto"></audio>
+<button id="bgm-toggle" class="paused" aria-label="播放或暂停背景音乐">
+  <span class="ring"></span>
+  <span class="icon">
+    <span class="tri"></span>
+    <span class="bar bar1"></span>
+    <span class="bar bar2"></span>
+  </span>
+</button>
+<div id="bgm-credit">《Deep Listening (1111 Hz)》<br>—— Malte Marten</div>
+
+<!-- ============ HERO ============ -->
+<section id="hero">
+  <div class="hero-photo reveal"><img src="images/hero-original.jpg" alt="爸爸"></div>
+  <div class="eyebrow serif reveal">写 给 爸 爸</div>
+  <h1 class="serif reveal">时光记<br>—— 爸爸的七十一年</h1>
+  <div class="date-line reveal">
+    <b>1955 年 8 月 9 日</b> · 出生　　今年，是您的第 <b>71</b> 个生日
+  </div>
+  <div class="scrolldown reveal">向 下 翻 阅</div>
+</section>
+
+<!-- ============ 弱冠 · 军旅 ============ -->
+<div class="seal-divider reveal"><div class="line"></div><div class="seal">弱冠</div><div class="line"></div></div>
+<section class="stage" id="stage-junlv">
+  <div class="inner">
+    <div class="stars" id="stars"></div>
+    <div class="kicker serif reveal">1972 — 1976　十七岁入伍 · 南疆四年</div>
+    <h2 class="serif reveal">军营里的少年</h2>
+    <div class="body-text reveal">
+      <p>十七岁，一个懵懵懂懂、年少稚嫩的男孩，背起行囊入伍，来到南疆的军营里，一守就是四年，不能探亲返家。</p>
+      <p>多少次梦回故里，醒来不见家人，来去匆匆，悲凉而凄楚，近乎抑郁。陪着他度过那些绵长思念之夜的，唯有一本司马迁的《史记》，和一支口琴。</p>
+      <p>也是这四年，为他日后读书写作的习惯、独立生活与思考、处世的意志力，打下了底子。</p>
+    </div>
+
+    <div class="companions reveal">
+      <div class="item"><span class="dot"></span>一本《史记》</div>
+      <div class="item"><span class="dot"></span>一支口琴</div>
+      <div class="item"><span class="dot"></span>不能寄达的家书</div>
+    </div>
+
+    <div class="quote-block reveal">
+      "自信人生二百年，会当击水三千里。"
+      <span class="cite-src">—— 毛泽东　《七古·残句》（湖南第一师范求学时所作）</span>
+      <span class="own-words">人生要有格局，一切都尽心尽力，在自然的运势中，化解喜怒哀乐的自身底气和功力。</span>
+      <span class="attr">—— 爸爸 原话</span>
+    </div>
+
+    <div class="gallery reveal">
+      <figure>
+        <img src="images/junlv-formal.jpg" alt="军装照">
+        <figcaption>戎装 · 战友情</figcaption>
+      </figure>
+      <figure>
+        <img src="images/junlv-reunion2025.jpg" alt="2025年八一战友联谊会">
+        <figcaption>2025 · 八一战友联谊会</figcaption>
+      </figure>
+    </div>
+    <p class="fact-note" style="color:var(--night-soft); margin-top:14px;">这身军装，是退伍多年后战友聚会时穿上的——但那份牵挂，从没退役。</p>
+  </div>
+</section>
+
+<!-- ============ 而立 · 成家 ============ -->
+<div class="seal-divider reveal"><div class="line"></div><div class="seal">而立</div><div class="line"></div></div>
+<section class="stage" id="stage-erli">
+  <div class="kicker serif reveal">而立之年　转业</div>
+  <h2 class="serif reveal">扎下根的岁月</h2>
+  <div class="body-text reveal">
+    <p>从部队转业后，爸爸成为了贵州省公安厅的一员。照片里那件厚重的呢子大衣，裹着一个刚刚而立之年、却已经扛起责任的人。</p>
+  </div>
+  <figure class="photo-frame reveal">
+    <img src="images/erli-gongan.jpg" alt="贵州省公安厅门前留影">
+    <figcaption>贵州省公安厅门前</figcaption>
+  </figure>
+</section>
+
+<!-- ============ 花甲 · 从容 ============ -->
+<div class="seal-divider reveal"><div class="line"></div><div class="seal">花甲</div><div class="line"></div></div>
+<section class="stage" id="stage-huajia">
+  <div class="kicker serif reveal">花甲之年　卸下担子</div>
+  <h2 class="serif reveal">慢下来的时光</h2>
+  <div class="body-text reveal">
+    <p>每月十五，他都会去寺庙走一走、拜一拜。</p>
+  </div>
+  <div class="gallery reveal">
+    <figure>
+      <img src="images/huajia-leisure.jpg" alt="阳台闲坐">
+      <figcaption>闲坐阳台</figcaption>
+    </figure>
+    <figure>
+      <img src="images/huajia-melon2.jpg" alt="吃西瓜">
+      <figcaption>夏日西瓜</figcaption>
+    </figure>
+    <figure>
+      <img src="images/guxi-temple.jpg" alt="寺庙">
+      <figcaption>每月十五 · 拜佛</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ 古稀 · 如今 ============ -->
+<div class="seal-divider reveal"><div class="line"></div><div class="seal">古稀</div><div class="line"></div></div>
+<section class="stage" id="stage-guxi">
+  <div class="kicker serif reveal">古稀之年　如今</div>
+  <h2 class="serif reveal">他镜头里的日子</h2>
+  <div class="body-text reveal">
+    <p>这些年，爸爸没有闲下来。他还学着开起了小飞机，也重新弹起了钢琴——年少时，是一支口琴陪他熬过南疆的长夜，如今琴声换了一种，心境却依然是那份从容。</p>
+    <p>他的视频号里，藏着这些镜头背后的日子。</p>
+  </div>
+
+  <div class="gallery reveal">
+    <figure>
+      <img src="images/guxi-poetry.jpg" alt="诗社活动">
+      <figcaption>诗社雅集</figcaption>
+    </figure>
+    <figure>
+      <img src="images/guxi-duanwu.jpg" alt="端午造型">
+      <figcaption>端午 · 唐装</figcaption>
+    </figure>
+    <figure>
+      <img src="images/piano-final.jpg" alt="弹钢琴">
+      <figcaption>重拾琴声</figcaption>
+    </figure>
+    <figure>
+      <img src="images/guxi-flying.jpg" alt="驾驶飞机">
+      <figcaption>学开飞机</figcaption>
+    </figure>
+    <figure>
+      <img src="images/guxi-vintage.jpg" alt="怀旧军装造型">
+      <figcaption>戎装 · 旧影</figcaption>
+    </figure>
+  </div>
+
+  <div class="channel-card reveal">
+    <div class="label serif">视频号 · 他的镜头</div>
+    <a class="btn" href="https://weixin.qq.com/sph/APn40dmrnB" target="_blank" rel="noopener">在微信中打开 →</a>
+  </div>
+</section>
+
+<!-- ============ 心迹 · 笔下深情 ============ -->
+<div class="seal-divider reveal"><div class="line"></div><div class="seal">心迹</div><div class="line"></div></div>
+<section class="stage" id="stage-xinji">
+  <div class="kicker serif reveal">笔下的深情</div>
+  <h2 class="serif reveal">他写下的字句</h2>
+  <div class="intro reveal">这一页，是爸爸留在纸上的两段心事。</div>
+
+  <div class="poem-card reveal">
+    <div class="poem-title serif">《那只手》（节选）</div>
+    <div class="poem-meta">2008 年汶川地震后所作　·　曾刊于本地报纸，获读者与本市宣传部长撰文称赞</div>
+    <figure class="photo-frame" style="margin-top:0; margin-bottom:26px;">
+      <img src="images/wenchuan-article-full.jpg" alt="报纸原文《那只手》">
+      <figcaption>报纸原文</figcaption>
+    </figure>
+    <div class="poem-body">那只手，
+昨天我看到了你的那只手，
+在课堂里写着你未来的憧憬，
+我要当画家，
+我要当军人，
+我要当一名优秀的人民教师……</div>
+    <div class="poem-note">这首诗写在"5·12"之后，彻夜难眠时落笔。有读者评价，他"没有渲染灾难的惨烈，只抓住那只攥着笔的小手，就把绝境里的倔强、对生的渴望，全揉进了字里行间"。</div>
+  </div>
+
+  <div class="poem-card reveal">
+    <div class="poem-title serif">《悼父》</div>
+    <div class="poem-meta">丙午年夏　·　写给爷爷</div>
+    <div class="poem-body">老头
+其实您是一个沉默的人
+豫腔的铿锵是高梁和棒子的滋养。
+辉煌时您沉默
+"ICU"您沉默
+临行前您沉默
+只有星星一样的眼神放光
+人世间太多的纷纷扰扰
+在沉默中应对是是非非
+在九死一生的阅历中
+还是选择了沉默……
+今天是"大山"的节日
+提笔时，眼泪开了闸。
+欲言又止欲哭无泪
+一直以来的压抑
+此时在泪水和笔端倾泻
+你走了，去天堂和妈妈团聚
+你没走，你和妈妈时时刻刻
+在我们身边……
+"姜说"妈妈对我的呼唤依然回响。</div>
+  </div>
+
+  <figure class="photo-frame reveal" style="margin:8px auto 44px;">
+    <img src="images/family-yeye1.jpg" alt="爸爸和爷爷">
+    <figcaption>与爷爷在一起</figcaption>
+  </figure>
+</section>
+
+<!-- ============ 结语 ============ -->
+<section id="closing">
+  <div class="closing-photo reveal"><img src="images/closing-portrait.jpg" alt="爸爸"></div>
+  <div class="mark reveal"></div>
+
+  <p class="msg strong reveal">爸，我想对你说，你真的是天底下最好的爸爸！</p>
+  <p class="msg strong reveal">爸爸对我的爱，让我也有能力去爱爸爸、爱妈妈、爱这个家，也爱着这个世界。</p>
+
+  <div class="thought-break reveal"></div>
+
+  <p class="msg strong reveal">为了这个家，爸爸默默承担了太多从未说出口的辛苦和委屈。他把所有的风霜扛在肩上，并把所有的温柔留给了我。</p>
+
+  <div class="thought-break reveal"></div>
+
+  <p class="msg strong reveal">我在爸爸的肩上，看过日出日落，斗转星移，山河万千。雪落在他身上，我伸手去接，指尖刚触到，那片雪花却已经悄悄化成了水。往事像一列接一列的火车，从眼前疾驰而过：认真的爸爸，严肃的爸爸，笑容满面的爸爸。夜幕四合时，他在台灯下读报，或是坐在客厅里看新闻，又或是开着车，载着一家人去公园，看那些寻常又珍贵的风景。一节节车厢，装满了旧日时光，轰鸣着，从我眼前呼啸而过。</p>
+
+  <div class="epigraph reveal">
+    <div class="cn">循此逆旅，以达天际。</div>
+    <div class="en">In peaceful passage of the years,<br>the way is strewn with floral blooms.</div>
+    <div class="cn-sub">安然度岁，满路繁花。</div>
+  </div>
+
+  <p class="msg reveal">爸爸，生日快乐。</p>
+  <p class="msg reveal">愿您此后岁岁，身体健康，平安顺遂，自在无忧。</p>
+  <div class="sign reveal">—— 您的女儿</div>
+
+  <div class="final-blessing reveal">
+    <div class="line">年有今朝　不问往岁</div>
+    <div class="line">此岁尽安　余岁皆幸</div>
+  </div>
+</section>
+
+<footer>时光记 · 献给爸爸的七十一岁生日</footer>
+
+<script>
+  // 顶部卷轴进度
+  const bar = document.getElementById('scrollbar');
+  function updateBar(){
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    bar.style.width = scrolled + '%';
+  }
+  document.addEventListener('scroll', updateBar);
+  updateBar();
+
+  // 滚动浮现
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.15, rootMargin:"0px 0px -60px 0px"});
+  revealEls.forEach(el=>io.observe(el));
+
+  // 星空点缀（军旅章节）
+  const starsWrap = document.getElementById('stars');
+  if(starsWrap){
+    let html = '';
+    for(let i=0;i<50;i++){
+      const top = Math.random()*100;
+      const left = Math.random()*100;
+      const delay = (Math.random()*4).toFixed(2);
+      html += `<span style="top:${top}%;left:${left}%;animation:twinkle 3.5s ease-in-out ${delay}s infinite;"></span>`;
+    }
+    starsWrap.innerHTML = html;
+  }
+  const styleEl = document.createElement('style');
+  styleEl.textContent = `@keyframes twinkle{0%,100%{opacity:0.15;}50%{opacity:0.7;}}`;
+  document.head.appendChild(styleEl);
+
+  // 背景音乐：进入网站尝试自动播放，若被浏览器拦截，按钮保持"暂停"状态等待点击
+  const bgm = document.getElementById('bgm');
+  const bgmBtn = document.getElementById('bgm-toggle');
+  bgm.volume = 0.55;
+
+  function setPlayingUI(isPlaying){
+    bgmBtn.classList.toggle('playing', isPlaying);
+    bgmBtn.classList.toggle('paused', !isPlaying);
+  }
+
+  function tryAutoplay(){
+    const p = bgm.play();
+    if(p !== undefined){
+      p.then(() => setPlayingUI(true)).catch(() => setPlayingUI(false));
+    }
+  }
+  tryAutoplay();
+
+  bgmBtn.addEventListener('click', () => {
+    if(bgm.paused){
+      bgm.play().then(() => setPlayingUI(true)).catch(() => setPlayingUI(false));
+    } else {
+      bgm.pause();
+      setPlayingUI(false);
+    }
+  });
+</script>
+
+</body>
+</html>
